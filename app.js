@@ -976,15 +976,27 @@ function updateDownloadSection(){
 
   // Patch notes
   s('dlPatchTitle', es?'◆  NOTAS DEL PARCHE':'◆  PATCH NOTES');
-  s('dlTagNew','NUEVO'); s('dlTagNew','NUEVO');
+  s('dlTagNew','FIX'); s('dlTagNew','FIX');
   s('dlTagNew2','NUEVO'); s('dlTagNew3','NUEVO'); s('dlTagNew4','NUEVO');
-  s('dlTagFix1','FIX');
-  s('dlPatch1', es?'Lanzamiento inicial · TF1 + TF2 completo':'Initial release · Full TF1 + TF2');
-  s('dlPatch2', es?'Favoritos, progreso de piloto y loadouts':'Favorites, pilot progress and loadouts');
-  s('dlPatch3', es?'Comparador de titanes · Titán del día':'Titan compare tool · Titan of the day');
-  s('dlPatch4', es?'Campaña de TF2 por capítulos con vídeo':'TF2 campaign by chapters with video');
-  s('dlPatch5', es?'Traducciones ES/EN revisadas':'ES/EN translations reviewed');
-  s('dlPatchNote', es?'Las actualizaciones futuras aparecerán aquí.':'Future updates will appear here.');
+  s('dlTagFix1','NUEVO');
+  s('dlTagFix2','FIX');
+  s('dlPatch1', es?'Compatibilidad multimedia mejorada en todos los dispositivos':'Improved media compatibility on all devices');
+  s('dlPatch2', es?'Nueva secuencia de inicio dinamica y cinematica':'New dynamic cinematic startup sequence');
+  s('dlPatch3', es?'Nueva seccion Laboratorio en Ajustes':'New Lab section in Settings');
+  s('dlPatch4', es?'Lore interconectado entre Pilotos y Titanes':'Interconnected lore between Pilots and Titans');
+  s('dlPatch5', es?'Panel tactico para analizar tu equipamiento':'Tactical panel to analyze your loadout');
+  s('dlPatch6', es?'Mejoras estructurales de estabilidad y velocidad':'Structural stability and speed improvements');
+  s('dlPatchNote', es?'Actualizacion centrada en estabilidad, lore y equipamiento.':'Update focused on stability, lore and loadouts.');
+  s('dlPatchTitleV10', es?'\u25C6  NOTAS DEL PARCHE':'\u25C6  PATCH NOTES');
+  s('dlTagV10New1', es?'NUEVO':'NEW'); s('dlTagV10New2', es?'NUEVO':'NEW');
+  s('dlTagV10New3', es?'NUEVO':'NEW'); s('dlTagV10New4', es?'NUEVO':'NEW');
+  s('dlTagV10Fix1','FIX');
+  s('dlPatchV10_1', es?'Lanzamiento inicial - TF1 + TF2 completo':'Initial release - Full TF1 + TF2');
+  s('dlPatchV10_2', es?'Favoritos, progreso de piloto y loadouts':'Favorites, pilot progress and loadouts');
+  s('dlPatchV10_3', es?'Comparador de titanes y Titan del dia':'Titan compare tool and Titan of the day');
+  s('dlPatchV10_4', es?'Campana de TF2 por capitulos con video':'TF2 campaign by chapters with video');
+  s('dlPatchV10_5', es?'Traducciones ES/EN revisadas':'ES/EN translations reviewed');
+  s('dlPatchNoteV10', es?'Primera version publica de Titanfall Nexus.':'First public version of Titanfall Nexus.');
 
   // Install
   h('dlInstall', es
