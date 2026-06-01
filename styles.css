@@ -1,4 +1,3 @@
-/* ═══════════════════════════ CSS VARS ═══════════════════════════ */
 :root {
   --bg:       #05080d;
   --surf:     #0a1018;
@@ -20,7 +19,7 @@
   --yellow:   #e0a820;
 }
 
-/* ═══════════════════════════ RESET ═══════════════════════════ */
+
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
@@ -31,7 +30,6 @@ body{
   overflow-x:hidden;
 }
 
-/* ═══════════════════════════ SCANLINE FX ═══════════════════════════ */
 body::before{
   content:'';
   position:fixed;inset:0;
@@ -39,7 +37,6 @@ body::before{
   pointer-events:none;z-index:9999;
 }
 
-/* ═══════════════════════════ HEADER ═══════════════════════════ */
 header{
   position:sticky;top:0;z-index:500;
   background:var(--surf);
@@ -82,7 +79,6 @@ header{
 .apk-btn:hover{background:var(--orange2)}
 .apk-btn svg{width:14px;height:14px}
 
-/* ═══════════════════════════ NAV TABS ═══════════════════════════ */
 nav{
   background:var(--surf);
   border-bottom:2px solid var(--orange);
@@ -104,7 +100,6 @@ nav::-webkit-scrollbar{display:none}
 .nav-tab.active{color:var(--orange);border-bottom-color:var(--orange)}
 .nav-tab.active svg{opacity:1}
 
-/* ═══════════════════════════ FILTER BAR ═══════════════════════════ */
 .filter-bar{
   padding:10px 24px;background:var(--surf);
   border-bottom:1px solid var(--border);
@@ -129,12 +124,10 @@ nav::-webkit-scrollbar{display:none}
 .search-box::placeholder{color:var(--muted)}
 .search-box:focus{border-color:var(--cyan)}
 
-/* ═══════════════════════════ MAIN CONTENT ═══════════════════════════ */
 main{padding:20px 24px 60px}
 .section{display:none}
 .section.active{display:block}
 
-/* ═══════════════════════════ CARD GRID ═══════════════════════════ */
 .card-grid{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
@@ -186,7 +179,6 @@ main{padding:20px 24px 60px}
   color:var(--orange);width:24px;text-align:right;flex-shrink:0;
 }
 
-/* ═══════════════════════════ DETAIL PANEL ═══════════════════════════ */
 .overlay{
   display:none;position:fixed;inset:0;
   background:rgba(0,5,12,.85);z-index:800;
@@ -257,7 +249,6 @@ main{padding:20px 24px 60px}
 .detail-stat .stat-bar{height:4px}
 .detail-stat .stat-val{font-size:.65rem;width:30px}
 
-/* ═══════════════════════════ CAMPAIGN SECTION ═══════════════════════════ */
 .campaign-header{
   text-align:center;padding:40px 0 30px;
   border-bottom:1px solid var(--border);margin-bottom:30px;
@@ -302,7 +293,6 @@ main{padding:20px 24px 60px}
   font-family:'Share Tech Mono',monospace;font-size:.6rem;color:var(--muted);
 }
 
-/* ═══════════════════════════ DOWNLOAD SECTION ═══════════════════════════ */
 .download-section{
   max-width:700px;margin:40px auto;
   text-align:center;
@@ -366,7 +356,6 @@ main{padding:20px 24px 60px}
   padding:4px 10px;
 }
 
-/* ═══════════════════════════ FACTION SPECIFIC ═══════════════════════════ */
 .faction-card{
   border-left:3px solid;
 }
@@ -379,14 +368,12 @@ main{padding:20px 24px 60px}
 .member::before{content:'▸';color:var(--orange);font-size:.7rem}
 .member:last-child{border-bottom:none}
 
-/* ═══════════════════════════ EMPTY / NO RESULTS ═══════════════════════════ */
 .no-results{
   text-align:center;padding:60px 0;
   font-family:'Share Tech Mono',monospace;font-size:.75rem;
   color:var(--muted);letter-spacing:.15em;
 }
 
-/* ═══════════════════════════ RESPONSIVE ═══════════════════════════ */
 @media(max-width:600px){
   header{padding:0 14px;gap:10px}
   header .apk-btn span{display:none}
@@ -400,9 +387,7 @@ main{padding:20px 24px 60px}
   .chapter-card{flex-direction:column;gap:10px}
   .chapter-num{font-size:1.8rem}
 }
-/* ═══════════════════════════ VIDEO PLAYER ═══════════════════════════ */
 
-/* Badge de vídeo en las cards */
 .badge-video{
   color:var(--orange);
   border-color:rgba(245,90,14,.5);
@@ -411,7 +396,6 @@ main{padding:20px 24px 60px}
   letter-spacing:.06em;
 }
 
-/* Player en el detail panel */
 .video-wrap{
   width:100%;
   margin-bottom:18px;
@@ -424,16 +408,22 @@ main{padding:20px 24px 60px}
 .panel-video{
   width:100%;
   display:block;
+  aspect-ratio:16/9;
+  height:auto;
   max-height:320px;
   background:#000;
   outline:none;
+}
+
+iframe.panel-video{
+  border:0;
 }
 
 .panel-video::-webkit-media-controls-panel{
   background:linear-gradient(transparent,rgba(0,0,0,.8));
 }
 
-/* Banner de vídeo en secciones (pilotos / campaña) */
+
 .section-video-banner{
   margin-bottom:20px;
   background:var(--surf);
@@ -500,53 +490,20 @@ iframe.section-video{
   outline:none;
 }
 
-/* ═══════════════════════════ DOWNLOAD HERO ═══════════════════════════ */
-
-
-
-
-
-
 .dl-hero-title span{color:var(--orange)}
-
-
-/* Stats row */
-
-
-
-
-
-
-/* Main download button */
-
 
 .dl-main-btn svg{
   width:28px;height:28px;
   flex-shrink:0;
 }
 
-
-
-/* Features grid */
-
-
-
-
-
-/* Install note */
-
 .dl-install-note strong{color:var(--text2)}
 
 @media(max-width:600px){
   
-  
-  
-  
-  
-  
 }
 
-/* ═══════════════════════════ DOWNLOAD PAGE ═══════════════════════════ */
+
 
 .dl-page{
   min-height:calc(100vh - 130px);
@@ -693,7 +650,6 @@ iframe.section-video{
   border-radius:8px;
 }
 
-/* Responsive */
 @media(max-width:860px){
   .dl-page{
     grid-template-columns:1fr;
@@ -713,7 +669,6 @@ iframe.section-video{
   .dl-badge-n{font-size:1.5rem}
 }
 
-/* ═══════════════════════════ FEATURED BAR ═══════════════════════════ */
 .featured-bar{
   background:var(--surf);
   border-bottom:1px solid var(--border);
@@ -744,7 +699,6 @@ iframe.section-video{
 }
 .feat-open:hover{background:rgba(245,90,14,.1)}
 
-/* ═══════════════════════════ FAVORITES STAR ═══════════════════════════ */
 .fav-star{
   position:absolute;top:12px;right:12px;
   background:none;border:none;
@@ -755,7 +709,6 @@ iframe.section-video{
 .fav-star:hover,.fav-star.active{color:#f5c518}
 .card{position:relative}
 
-/* ═══════════════════════════ COMPARE SECTION ═══════════════════════════ */
 .compare-page{max-width:860px;margin:0 auto;padding:24px 0}
 .compare-header{margin-bottom:20px}
 .compare-tag{
@@ -802,7 +755,6 @@ iframe.section-video{
 }
 .cmp-winner{border-color:var(--orange)}
 
-/* ═══════════════════════════ LOADOUTS ═══════════════════════════ */
 .loadout-page{max-width:700px;margin:0 auto;padding:24px 0}
 .loadout-header{
   display:flex;align-items:flex-start;justify-content:space-between;
@@ -880,7 +832,6 @@ iframe.section-video{
 }
 .lf-cancel:hover{border-color:var(--muted);color:var(--text2)}
 
-/* ═══════════════════════════ FAVORITES PAGE ═══════════════════════════ */
 .fav-page{padding:24px 0}
 .fav-header{
   display:flex;align-items:center;gap:12px;margin-bottom:20px;
@@ -933,9 +884,6 @@ iframe.section-video{
   .cmp-bars{grid-template-columns:1fr 30px 1fr;gap:4px}
 }
 
-/* ═══════════════════════════ DOWNLOAD v2 ═══════════════════════════ */
-
-/* Remove old dl-page/dl-left/dl-right/dl-card CSS conflicts */
 .dl-page,.dl-left,.dl-right,.dl-card,.dl-hero,.dl-logo-wrap,.dl-icon,.dl-hero-title,
 .dl-hero-sub,.dl-badges,.dl-badge-item,.dl-badge-n,.dl-badge-l,.dl-stats,.dl-stat,
 .dl-stat-num,.dl-stat-key,.dl-stat-sep,.dl-main-btn,.dl-cta,.dl-btn-label,.dl-btn-sub,
@@ -943,7 +891,6 @@ iframe.section-video{
 .dl-divider,.dl-card-header,.dl-card-icon,.dl-card-name,.dl-card-platform,
 .dl-req-row,.dl-req-dot,.dl-reqs{ display:none !important }
 
-/* New download wrapper */
 .dl2-wrapper{
   max-width:760px;margin:0 auto;
   padding:40px 0 80px;
@@ -1082,9 +1029,6 @@ iframe.section-video{
   .dl2-stat-l{font-size:.5rem}
 }
 
-/* ═══════════════════════════ DOWNLOAD v3 ═══════════════════════════ */
-
-/* Suppress old DL CSS */
 .dl2-wrapper{ display:none!important }
 
 .dl3-page{
@@ -1093,7 +1037,6 @@ iframe.section-video{
   display:flex;flex-direction:column;gap:0;
 }
 
-/* ── HERO ── */
 .dl3-hero{
   position:relative;overflow:hidden;
   border-radius:16px;
@@ -1313,7 +1256,6 @@ iframe.section-video{
 }
 .dl3-install strong{color:var(--text2)}
 
-/* Pause animations when section not visible */
 #sec-download:not(.active) *{animation-play-state:paused}
 
 @media(max-width:700px){

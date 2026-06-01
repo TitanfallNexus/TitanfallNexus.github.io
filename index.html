@@ -6,12 +6,12 @@
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Titanfall Nexus — Frontier Intelligence Database</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="icon" type="image/png" href="app_logo.png">
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<!-- ═══════════════════════ HEADER ═══════════════════════ -->
 <header>
   <div class="header-accent"><div class="a"></div><div class="b"></div></div>
   <div class="header-logo">
@@ -27,7 +27,6 @@
   </a>
 </header>
 
-<!-- ═══════════════════════ NAV ═══════════════════════ -->
 <nav>
   <button class="nav-tab active" onclick="showSection('pilots')" data-sec="pilots">
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
@@ -71,7 +70,6 @@
   </button>
 </nav>
 
-<!-- ═══════════════════════ FILTER BAR ═══════════════════════ -->
 <div class="filter-bar" id="filterBar">
   <button class="filter-btn active-all" id="fAll" onclick="setFilter('all')" data-t="filter_all">TODO</button>
   <button class="filter-btn" id="fTF1" onclick="setFilter('tf1')">TF1</button>
@@ -80,8 +78,7 @@
   <input class="search-box" id="searchBox" placeholder="Buscar..." oninput="onSearch(this.value)">
 </div>
 
-<!-- ═══════════════════════ MAIN ═══════════════════════ -->
-<!-- FEATURED BAR -->
+>
 <div id="featuredBar" class="featured-bar">
   <span class="feat-tag" id="featTag">TITÁN DEL DÍA</span>
   <span class="feat-name" id="featName">—</span>
@@ -91,7 +88,6 @@
 
 <main>
 
-<!-- PILOTOS -->
 <section class="section active" id="sec-pilots">
   <div id="pilots-video-banner" class="section-video-banner">
     <div class="svb-label" id="svb-pilots-label">GAMEPLAY - PILOTOS</div>
@@ -154,7 +150,6 @@
 <section class="section" id="sec-download">
   <div class="dl3-page">
 
-    <!-- ── HERO ─────────────────────────────────────────── -->
     <div class="dl3-hero" id="dl3Hero">
       <div class="dl3-hero-bg"></div>
       <div class="dl3-hero-content">
@@ -171,9 +166,8 @@
       </div>
     </div>
 
-    <!-- ── STATS COUNTER BAR ──────────────────────────────── -->
     <div class="dl3-stats" id="dl3Stats">
-      <div class="dl3-stat" data-target="11"><span class="dl3-stat-n" data-t="spec_titans">11</span><span class="dl3-stat-l" data-t="spec_titans">Titanes</span></div>
+      <div class="dl3-stat" data-target="11"><span class="dl3-stat-n">11</span><span class="dl3-stat-l" data-t="spec_titans">Titanes</span></div>
       <div class="dl3-sdiv"></div>
       <div class="dl3-stat"><span class="dl3-stat-n">9</span><span class="dl3-stat-l" data-t="spec_pilots">Pilotos</span></div>
       <div class="dl3-sdiv"></div>
@@ -184,7 +178,6 @@
       <div class="dl3-stat"><span class="dl3-stat-n">2</span><span class="dl3-stat-l" data-t="spec_langs">Idiomas</span></div>
     </div>
 
-    <!-- ── FEATURES ──────────────────────────────────────── -->
     <div class="dl3-features" id="dl3Features">
       <div class="dl3-feat" style="--delay:.05s">
         <div class="dl3-feat-glow" style="background:var(--cyan)"></div>
@@ -212,7 +205,7 @@
       </div>
     </div>
 
-    <!-- ── PATCH NOTES ───────────────────────────────────── -->
+ 
     <div class="dl3-patch" id="dl3Patch">
       <div class="dl3-patch-head">
         <span class="dl3-patch-label" id="dlPatchTitle">◆  NOTAS DEL PARCHE</span>
@@ -228,7 +221,7 @@
       <div class="dl3-patch-foot" id="dlPatchNote">Las actualizaciones futuras aparecerán aquí.</div>
     </div>
 
-    <!-- ── INSTALL NOTE ───────────────────────────────────── -->
+
     <p class="dl3-install" id="dlInstall">
       Para instalar activa <strong>Fuentes desconocidas</strong> en Ajustes → Seguridad.
     </p>
@@ -236,7 +229,7 @@
   </div>
 </section>
 
-<!-- COMPARAR TITANES -->
+
 <section class="section" id="sec-compare">
   <div class="compare-page">
     <div class="compare-header">
@@ -251,7 +244,7 @@
   </div>
 </section>
 
-<!-- LOADOUTS -->
+
 <section class="section" id="sec-loadouts">
   <div class="loadout-page">
     <div class="loadout-header">
@@ -263,7 +256,6 @@
     </div>
     <div id="loadoutList" class="loadout-list"></div>
 
-    <!-- Editor inline -->
     <div id="loadoutEditor" class="loadout-editor" style="display:none">
       <div class="loadout-editor-title" id="loadoutEditorTitle">NUEVO LOADOUT</div>
       <div class="loadout-form">
@@ -296,7 +288,6 @@
   </div>
 </section>
 
-<!-- FAVORITOS -->
 <section class="section" id="sec-favorites">
   <div class="fav-page">
     <div class="fav-header">
@@ -326,7 +317,6 @@
 
 </main>
 
-<!-- ═══════════════════════ DETAIL OVERLAY ═══════════════════════ -->
 <div class="overlay" id="overlay" onclick="closeDetail(event)">
   <div class="detail-panel" id="detailPanel">
     <div class="panel-handle"></div>

@@ -1,30 +1,19 @@
-// ═══════════════════════════════════════════════════════════════════
-//  VIDEO CONFIG — GitHub raw base URL
-// ═══════════════════════════════════════════════════════════════════
-
-const VIDEO_BASE = "https://raw.githubusercontent.com/TitanfallNexus/Vid/main/";
-
-// Titan trailers (TF2 only) — titan_{id}.mp4
 const TITAN_VIDEOS = {
-  ion:       VIDEO_BASE + "titan_ion.mp4",
-  scorch:    VIDEO_BASE + "titan_scorch.mp4",
-  ronin:     VIDEO_BASE + "titan_ronin.mp4",
-  tone:      VIDEO_BASE + "titan_tone.mp4",
-  northstar: VIDEO_BASE + "titan_northstar.mp4",
-  legion:    VIDEO_BASE + "titan_legion.mp4",
-  monarch:   VIDEO_BASE + "titan_monarch.mp4",
+  ion:       "https://www.youtube.com/embed/IMOl9o8vZIE?rel=0",
+  scorch:    "https://www.youtube.com/embed/jG-rWOGAIUE?rel=0",
+  ronin:     "https://www.youtube.com/embed/3psRTlxz5AY?rel=0",
+  tone:      "https://www.youtube.com/embed/1k2uSSFs_Xc?rel=0",
+  northstar: "https://www.youtube.com/embed/1BLyAxz6pLY?rel=0",
+  legion:    "https://www.youtube.com/embed/cAAyHn58KPw?rel=0",
+  monarch:   "https://www.youtube.com/embed/s85IrfMlBUA?rel=0",
 };
 
-// Campaign — single official trailer
 const CAMPAIGN_TRAILER = "https://www.youtube.com/embed/00wFXKzVYfE?rel=0";
 
-// Pilots — general gameplay video
 const PILOTS_GAMEPLAY = "https://www.youtube.com/embed/nHvoaAAhGno?rel=0";
 
-// ═══════════════════════════════════════════════════════════════════
-//  DATA
-// ═══════════════════════════════════════════════════════════════════
 
+//  DATA
 const DATA = {
 
 titans:[
@@ -395,10 +384,8 @@ campaign:[
 
 };
 
-// ═══════════════════════════════════════════════════════════════════
-//  TRANSLATIONS
-// ═══════════════════════════════════════════════════════════════════
 
+//  TRANSLATIONS
 const T = {
   es:{
     nav_pilots:"PILOTOS", nav_titans:"TITANES", nav_weapons:"ARMAS",
@@ -454,10 +441,6 @@ const T = {
   }
 };
 
-// ═══════════════════════════════════════════════════════════════════
-//  STATE
-// ═══════════════════════════════════════════════════════════════════
-
 let lang = 'es';
 let currentSection = 'pilots';
 let currentFilter = 'all';
@@ -466,10 +449,6 @@ let searchQuery = '';
 function t(key){ return T[lang][key] || key; }
 function isEs(){ return lang === 'es'; }
 function getGame(g){ return g === 1 ? '<span class="badge badge-tf1">TF1</span>' : '<span class="badge badge-tf2">TF2</span>'; }
-
-// ═══════════════════════════════════════════════════════════════════
-//  STAT BAR
-// ═══════════════════════════════════════════════════════════════════
 
 function statBar(label, val, color){
   return `<div class="detail-stat">
@@ -487,9 +466,6 @@ function miniBar(label, val, color){
   </div>`;
 }
 
-// ═══════════════════════════════════════════════════════════════════
-//  FILTER & SEARCH
-// ═══════════════════════════════════════════════════════════════════
 
 function filterData(items){
   return items.filter(item => {
@@ -524,10 +500,6 @@ function onSearch(v){
   renderAll();
 }
 
-// ═══════════════════════════════════════════════════════════════════
-//  RENDER CARDS
-// ═══════════════════════════════════════════════════════════════════
-
 function renderAll(){
   renderPilots(); renderTitans(); renderWeapons();
   renderFactions(); renderMaps(); renderCampaign();
@@ -537,7 +509,7 @@ function noResults(){
   return `<div class="no-results">${t('no_results')}</div>`;
 }
 
-// ── TITANS ──────────────────────────────────────────────────────────
+// ── TITANS 
 function renderTitans(){
   const items = filterData(DATA.titans);
   const g = document.getElementById('grid-titans');
@@ -558,12 +530,11 @@ function renderTitans(){
   }).join('');
 }
 
-// ── PILOTS ──────────────────────────────────────────────────────────
+// ── PILOTS 
 function renderPilots(){
   const items = filterData(DATA.pilots);
   const g = document.getElementById('grid-pilots');
 
-  // Show/hide pilots gameplay banner
   const pilotsBanner = document.getElementById('pilots-video-banner');
   if(pilotsBanner) pilotsBanner.style.display = (currentFilter==='all' && !searchQuery) ? 'block' : 'none';
 
@@ -587,7 +558,7 @@ function renderPilots(){
   }).join('');
 }
 
-// ── WEAPONS ──────────────────────────────────────────────────────────
+// ── WEAPONS 
 function renderWeapons(){
   const items = filterData(DATA.weapons);
   const g = document.getElementById('grid-weapons');
@@ -606,7 +577,7 @@ function renderWeapons(){
   }).join('');
 }
 
-// ── FACTIONS ──────────────────────────────────────────────────────────
+// ── FACTIONS 
 function renderFactions(){
   const items = DATA.factions.filter(f => {
     if(currentFilter==='tf1' && !f.tf1) return false;
@@ -630,7 +601,7 @@ function renderFactions(){
   }).join('');
 }
 
-// ── MAPS ──────────────────────────────────────────────────────────
+// ── MAPS 
 function renderMaps(){
   const items = filterData(DATA.maps);
   const g = document.getElementById('grid-maps');
@@ -649,10 +620,9 @@ function renderMaps(){
   }).join('');
 }
 
-// ── CAMPAIGN ──────────────────────────────────────────────────────────
+// ── CAMPAIGN 
 function renderCampaign(){
   const cl = document.getElementById('chapter-list');
-  // Campaign trailer banner
   const cb = document.getElementById('campaign-trailer-banner');
   if(cb){ cb.style.display = 'block'; }
 
@@ -675,20 +645,33 @@ function renderCampaign(){
   }).join('');
 }
 
-// ═══════════════════════════════════════════════════════════════════
-//  DETAIL PANELS
-// ═══════════════════════════════════════════════════════════════════
-
 function openOverlay(html){
+  stopSectionVideos(null);
   document.getElementById('detailContent').innerHTML = html;
   document.getElementById('overlay').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 
+function resetVideoFrame(frame){
+  if(!frame) return;
+  const src = frame.getAttribute('src');
+  if(!src) return;
+  frame.setAttribute('src', '');
+  frame.setAttribute('src', src);
+}
+
+function stopSectionVideos(activeSection){
+  if(activeSection !== 'pilots') resetVideoFrame(document.getElementById('pilots-video-frame'));
+  if(activeSection !== 'campaign') resetVideoFrame(document.getElementById('campaign-video-frame'));
+}
+
 function closeDetail(e){
   if(e && e.target !== document.getElementById('overlay')) return;
-  document.getElementById('overlay').classList.remove('open');
+  const overlay = document.getElementById('overlay');
+  const detailContent = document.getElementById('detailContent');
+  overlay.classList.remove('open');
   document.body.style.overflow = '';
+  if(detailContent) detailContent.innerHTML = '';
 }
 
 document.addEventListener('keydown', e => { if(e.key==='Escape') closeDetail({target:document.getElementById('overlay')}); });
@@ -706,9 +689,14 @@ function openTitan(id){
   const videoBlock = videoUrl ? `
     <div class="section-label">${videoLabel}</div>
     <div class="video-wrap">
-      <video class="panel-video" controls preload="none" poster="">
-        <source src="${videoUrl}" type="video/mp4">
-      </video>
+      <iframe
+        class="panel-video"
+        src="${videoUrl}"
+        title="${t2.name} Titanfall Trailer"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen>
+      </iframe>
     </div>` : '';
   openOverlay(`
     <div class="panel-header">
@@ -882,12 +870,9 @@ function openChapter(n){
   `);
 }
 
-// ═══════════════════════════════════════════════════════════════════
-//  NAVIGATION
-// ═══════════════════════════════════════════════════════════════════
-
 function showSection(sec){
   currentSection = sec;
+  stopSectionVideos(sec);
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
   document.querySelectorAll('.nav-tab').forEach(b=>{
     b.classList.toggle('active', b.dataset.sec===sec);
@@ -910,9 +895,6 @@ function showSection(sec){
   closeDetail({target:document.getElementById('overlay')});
 }
 
-// ═══════════════════════════════════════════════════════════════════
-//  LANGUAGE
-// ═══════════════════════════════════════════════════════════════════
 
 function setLang(l){
   lang = l;
@@ -922,7 +904,6 @@ function setLang(l){
   document.getElementById('searchBox').placeholder = t('search_placeholder');
   document.getElementById('fAll').textContent = t('filter_all');
 
-  // Update nav tab labels
   document.querySelectorAll('[data-t]').forEach(el=>{
     const key = el.getAttribute('data-t');
     if(T[l][key]) el.textContent = T[l][key];
@@ -942,21 +923,15 @@ function setLang(l){
   closeDetail({target:document.getElementById('overlay')});
 }
 
-// ═══════════════════════════════════════════════════════════════════
-//  INIT
-// ═══════════════════════════════════════════════════════════════════
 
-// Set video sources for section banners
 (function initVideoBanners(){
-  // Pilots gameplay
+  
   const pilotsFrame = document.getElementById('pilots-video-frame');
   if(pilotsFrame) pilotsFrame.src = PILOTS_GAMEPLAY;
 
-  // Campaign trailer
   const campaignFrame = document.getElementById('campaign-video-frame');
   if(campaignFrame) campaignFrame.src = CAMPAIGN_TRAILER;
 
-  // Update labels on lang change — handled in setLang()
 })();
 
 function updateVideoBannerLabels(){
@@ -972,7 +947,6 @@ function updateDownloadSection(){
   const s = (id, text) => { const el=document.getElementById(id); if(el) el.textContent=text; };
   const h = (id, html) => { const el=document.getElementById(id); if(el) el.innerHTML=html; };
 
-  // Hero
   s('dlTag',     es?'TITANFALL NEXUS · ANDROID':'TITANFALL NEXUS · ANDROID');
   s('dlBody',    es?'Todo sobre Titanfall 1 y 2. Titanes, pilotos, armas, campaña y mucho más.'
                    :'Everything about Titanfall 1 and 2. Titans, pilots, weapons, campaign and more.');
@@ -980,11 +954,11 @@ function updateDownloadSection(){
   s('dlPlatform',es?'Android 8.0+':'Android 8.0+');
 
   // Stats
-  document.querySelectorAll('[data-t="spec_titans"]').forEach(e=>e.textContent=es?'Titanes':'Titans');
-  document.querySelectorAll('[data-t="spec_pilots"]').forEach(e=>e.textContent=es?'Pilotos':'Pilots');
-  document.querySelectorAll('[data-t="spec_weapons"]').forEach(e=>e.textContent=es?'Armas':'Weapons');
-  document.querySelectorAll('[data-t="spec_chapters"]').forEach(e=>e.textContent=es?'Capítulos':'Chapters');
-  document.querySelectorAll('[data-t="spec_langs"]').forEach(e=>e.textContent=es?'Idiomas':'Languages');
+  document.querySelectorAll('.dl3-stat-l[data-t="spec_titans"]').forEach(e=>e.textContent=es?'Titanes':'Titans');
+  document.querySelectorAll('.dl3-stat-l[data-t="spec_pilots"]').forEach(e=>e.textContent=es?'Pilotos':'Pilots');
+  document.querySelectorAll('.dl3-stat-l[data-t="spec_weapons"]').forEach(e=>e.textContent=es?'Armas':'Weapons');
+  document.querySelectorAll('.dl3-stat-l[data-t="spec_chapters"]').forEach(e=>e.textContent=es?'Capítulos':'Chapters');
+  document.querySelectorAll('.dl3-stat-l[data-t="spec_langs"]').forEach(e=>e.textContent=es?'Idiomas':'Languages');
 
   // Features
   s('dlFeat1Title', es?'Base de datos completa':'Complete database');
@@ -1029,10 +1003,6 @@ function updateDownloadSection(){
 }
 
 
-// ═══════════════════════════════════════════════════════════════════
-//  PERSISTENCE (localStorage)
-// ═══════════════════════════════════════════════════════════════════
-
 const STORE = {
   getFavs(){ try{ return JSON.parse(localStorage.getItem('tf_favs')||'[]'); }catch(e){return [];} },
   setFavs(a){ localStorage.setItem('tf_favs', JSON.stringify(a)); },
@@ -1045,9 +1015,6 @@ const STORE = {
   }
 };
 
-// ═══════════════════════════════════════════════════════════════════
-//  FAVORITES
-// ═══════════════════════════════════════════════════════════════════
 
 function isFav(id){ return STORE.getFavs().includes(id); }
 
@@ -1115,9 +1082,6 @@ function renderFavorites(){
   updateProgress();
 }
 
-// ═══════════════════════════════════════════════════════════════════
-//  PROGRESS
-// ═══════════════════════════════════════════════════════════════════
 
 function markDiscovered(id){ STORE.addDiscovered(id); updateProgress(); }
 
@@ -1158,17 +1122,9 @@ openWeapon  = function(id){ markDiscovered(id); _oWeapon(id); };
 openMap     = function(id){ markDiscovered(id); _oMap(id);    };
 openFaction = function(id){ markDiscovered(id); _oFact(id);   };
 
-// ═══════════════════════════════════════════════════════════════════
-//  ADD FAV STAR TO DETAIL PANELS
-// ═══════════════════════════════════════════════════════════════════
-
-// Patch openOverlay to inject fav star when an id is detected
 const _origOpenOverlay = openOverlay;
 openOverlay = function(html){ _origOpenOverlay(html); };
 
-// ═══════════════════════════════════════════════════════════════════
-//  COMPARE TITANS
-// ═══════════════════════════════════════════════════════════════════
 
 function initCompare(){
   const s1 = document.getElementById('cmpSel1');
@@ -1218,10 +1174,6 @@ function updateCompare(){
   });
   res.innerHTML = html;
 }
-
-// ═══════════════════════════════════════════════════════════════════
-//  LOADOUTS
-// ═══════════════════════════════════════════════════════════════════
 
 function initLoadoutSelects(){
   const lp = document.getElementById('ltPilot');
@@ -1281,9 +1233,6 @@ function deleteLoadout(id){
   renderLoadouts();
 }
 
-// ═══════════════════════════════════════════════════════════════════
-//  FEATURED (Titán o Arma del Día)
-// ═══════════════════════════════════════════════════════════════════
 
 function initFeatured(){
   const day = Math.floor((Date.now() - new Date(new Date().getFullYear(),0,0)) / 86400000);
@@ -1348,9 +1297,6 @@ function getWeaponFact(id){
   return f[id]||(es?'Un arma temible de la Frontera.':'A fearsome weapon of the Frontier.');
 }
 
-// ═══════════════════════════════════════════════════════════════════
-//  LABEL UPDATE FUNCTIONS
-// ═══════════════════════════════════════════════════════════════════
 
 function updateLoadoutLabels(){
   const es=isEs();
