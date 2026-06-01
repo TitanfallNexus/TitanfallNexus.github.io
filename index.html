@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Titanfall Nexus — Frontier Intelligence Database</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ═══════════════════════ HEADER ═══════════════════════ -->
+<header>
+  <div class="header-accent"><div class="a"></div><div class="b"></div></div>
+  <div class="header-logo">
+    <h1>TITANFALL <span>NEXUS</span></h1>
+    <small id="appSub">BASE DE DATOS DE LA FRONTERA</small>
+  </div>
+  <div class="header-spacer"></div>
+  <button class="lang-btn active" id="btnES" onclick="setLang('es')">🇪🇸 ES</button>
+  <button class="lang-btn" id="btnEN" onclick="setLang('en')">🇬🇧 EN</button>
+  <a class="apk-btn" href="#download" onclick="showSection('download')">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 3v2h14v-2H5z"/></svg>
+    <span>DESCARGAR APK</span>
+  </a>
+</header>
+
+<!-- ═══════════════════════ NAV ═══════════════════════ -->
+<nav>
+  <button class="nav-tab active" onclick="showSection('pilots')" data-sec="pilots">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+    <span data-t="nav_pilots">PILOTOS</span>
+  </button>
+  <button class="nav-tab" onclick="showSection('titans')" data-sec="titans">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L4 6v6c0 5.5 3.4 10.7 8 12 4.6-1.3 8-6.5 8-12V6l-8-4z"/></svg>
+    <span data-t="nav_titans">TITANES</span>
+  </button>
+  <button class="nav-tab" onclick="showSection('weapons')" data-sec="weapons">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4v4H4v8h3v4h10v-4h3V8h-3V4H7zm2 2h6v2H9V6zm8 4v4H7v-4h10zm-8 6v2H9v-2h2zm4 0h2v2h-2v-2z"/></svg>
+    <span data-t="nav_weapons">ARMAS</span>
+  </button>
+  <button class="nav-tab" onclick="showSection('factions')" data-sec="factions">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.7 0 3-1.3 3-3s-1.3-3-3-3-3 1.3-3 3 1.3 3 3 3zm-8 0c1.7 0 3-1.3 3-3S9.7 5 8 5 5 6.3 5 8s1.3 3 3 3zm0 2c-2.3 0-7 1.2-7 3.5V19h14v-2.5c0-2.3-4.7-3.5-7-3.5zm8 0c-.3 0-.6 0-.9.1 1.1.8 1.9 1.9 1.9 3.4V19h6v-2.5c0-2.3-4.7-3.5-7-3.5z"/></svg>
+    <span data-t="nav_factions">FACCIONES</span>
+  </button>
+  <button class="nav-tab" onclick="showSection('maps')" data-sec="maps">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3l-.2.1L15 5.1 9 3 3.4 4.9c-.2.1-.4.3-.4.6V20.5c0 .3.2.5.5.5l.2-.1L9 18.9l6 2.1 5.6-1.9c.2-.1.4-.3.4-.6V3.5c0-.3-.2-.5-.5-.5zM15 19l-6-2.1V5l6 2.1V19z"/></svg>
+    <span data-t="nav_maps">MAPAS</span>
+  </button>
+  <button class="nav-tab" onclick="showSection('campaign')" data-sec="campaign">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+    <span data-t="nav_campaign">CAMPAÑA</span>
+  </button>
+  <button class="nav-tab" onclick="showSection('compare')" data-sec="compare">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h5v2h2V1h-2v2zm0 15H5l5-6v6zm9-15h-5v2h5v13l-5-6v6h5c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>
+    <span data-t="nav_compare">COMPARAR</span>
+  </button>
+  <button class="nav-tab" onclick="showSection('loadouts')" data-sec="loadouts">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/></svg>
+    <span data-t="nav_loadouts">LOADOUTS</span>
+  </button>
+  <button class="nav-tab" onclick="showSection('favorites')" data-sec="favorites">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+    <span data-t="nav_favorites">FAVORITOS</span>
+  </button>
+  <button class="nav-tab" onclick="showSection('download')" data-sec="download">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 3v2h14v-2H5z"/></svg>
+    <span data-t="nav_download">DESCARGAR</span>
+  </button>
+</nav>
+
+<!-- ═══════════════════════ FILTER BAR ═══════════════════════ -->
+<div class="filter-bar" id="filterBar">
+  <button class="filter-btn active-all" id="fAll" onclick="setFilter('all')" data-t="filter_all">TODO</button>
+  <button class="filter-btn" id="fTF1" onclick="setFilter('tf1')">TF1</button>
+  <button class="filter-btn" id="fTF2" onclick="setFilter('tf2')">TF2</button>
+  <div class="filter-spacer"></div>
+  <input class="search-box" id="searchBox" placeholder="Buscar..." oninput="onSearch(this.value)">
+</div>
+
+<!-- ═══════════════════════ MAIN ═══════════════════════ -->
+<!-- FEATURED BAR -->
+<div id="featuredBar" class="featured-bar">
+  <span class="feat-tag" id="featTag">TITÁN DEL DÍA</span>
+  <span class="feat-name" id="featName">—</span>
+  <span class="feat-fact" id="featFact"></span>
+  <button class="feat-open" id="featOpen" onclick="openFeatured()">VER →</button>
+</div>
+
+<main>
+
+<!-- PILOTOS -->
+<section class="section active" id="sec-pilots">
+  <div id="pilots-video-banner" class="section-video-banner">
+    <div class="svb-label" id="svb-pilots-label">GAMEPLAY - PILOTOS</div>
+    <iframe
+      id="pilots-video-frame"
+      class="section-video"
+      src=""
+      title="Titanfall Pilots Gameplay"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen>
+    </iframe>
+  </div>
+  <div class="card-grid" id="grid-pilots"></div>
+</section>
+
+<!-- TITANES -->
+<section class="section" id="sec-titans">
+  <div class="card-grid" id="grid-titans"></div>
+</section>
+
+<!-- ARMAS -->
+<section class="section" id="sec-weapons">
+  <div class="card-grid" id="grid-weapons"></div>
+</section>
+
+<!-- FACCIONES -->
+<section class="section" id="sec-factions">
+  <div class="card-grid" id="grid-factions"></div>
+</section>
+
+<!-- MAPAS -->
+<section class="section" id="sec-maps">
+  <div class="card-grid" id="grid-maps"></div>
+</section>
+
+<!-- CAMPAÑA -->
+<section class="section" id="sec-campaign">
+  <div id="campaign-trailer-banner" class="section-video-banner" style="display:none">
+    <div class="svb-label" id="svb-campaign-label">TRAILER OFICIAL - TITANFALL 2</div>
+    <iframe
+      id="campaign-video-frame"
+      class="section-video"
+      src=""
+      title="Titanfall 2 Campaign Trailer"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen>
+    </iframe>
+  </div>
+  <div class="campaign-header">
+    <div class="game-tag">TITANFALL 2</div>
+    <h2 data-t="nav_campaign">CAMPAÑA</h2>
+    <p>9 CAPÍTULOS · TYPHON · THE FOLD WEAPON</p>
+  </div>
+  <div class="chapter-list" id="chapter-list"></div>
+</section>
+
+<!-- DESCARGA -->
+<section class="section" id="sec-download">
+  <div class="dl3-page">
+
+    <!-- ── HERO ─────────────────────────────────────────── -->
+    <div class="dl3-hero" id="dl3Hero">
+      <div class="dl3-hero-bg"></div>
+      <div class="dl3-hero-content">
+        <div class="dl3-tag" id="dlTag">TITANFALL NEXUS · ANDROID</div>
+        <h1 class="dl3-title">TITANFALL <span>NEXUS</span></h1>
+        <p class="dl3-subtitle" id="dlBody">Todo sobre Titanfall 1 y 2. Titanes, pilotos, armas, campaña y mucho más.</p>
+        <div class="dl3-actions">
+          <a class="dl3-download-btn" href="TitanfallNexus.apk" download id="dl3Btn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 3v2h14v-2H5z"/></svg>
+            <span id="dlBtnText">Descargar APK</span>
+          </a>
+          <span class="dl3-platform" id="dlPlatform">Android 8.0+</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── STATS COUNTER BAR ──────────────────────────────── -->
+    <div class="dl3-stats" id="dl3Stats">
+      <div class="dl3-stat" data-target="11"><span class="dl3-stat-n" data-t="spec_titans">11</span><span class="dl3-stat-l" data-t="spec_titans">Titanes</span></div>
+      <div class="dl3-sdiv"></div>
+      <div class="dl3-stat"><span class="dl3-stat-n">9</span><span class="dl3-stat-l" data-t="spec_pilots">Pilotos</span></div>
+      <div class="dl3-sdiv"></div>
+      <div class="dl3-stat"><span class="dl3-stat-n">45</span><span class="dl3-stat-l" data-t="spec_weapons">Armas</span></div>
+      <div class="dl3-sdiv"></div>
+      <div class="dl3-stat"><span class="dl3-stat-n">9</span><span class="dl3-stat-l" data-t="spec_chapters">Capítulos</span></div>
+      <div class="dl3-sdiv"></div>
+      <div class="dl3-stat"><span class="dl3-stat-n">2</span><span class="dl3-stat-l" data-t="spec_langs">Idiomas</span></div>
+    </div>
+
+    <!-- ── FEATURES ──────────────────────────────────────── -->
+    <div class="dl3-features" id="dl3Features">
+      <div class="dl3-feat" style="--delay:.05s">
+        <div class="dl3-feat-glow" style="background:var(--cyan)"></div>
+        <div class="dl3-feat-icon" style="color:var(--cyan)">⬡</div>
+        <div class="dl3-feat-title" id="dlFeat1Title">Base de datos completa</div>
+        <div class="dl3-feat-desc" id="dlFeat1Desc">TF1 y TF2. Titanes, pilotos, armas, facciones y mapas con descripciones bilingües.</div>
+      </div>
+      <div class="dl3-feat" style="--delay:.1s">
+        <div class="dl3-feat-glow" style="background:var(--orange)"></div>
+        <div class="dl3-feat-icon" style="color:var(--orange)">▶</div>
+        <div class="dl3-feat-title" id="dlFeat2Title">Vídeos integrados</div>
+        <div class="dl3-feat-desc" id="dlFeat2Desc">Tráilers, campaña por capítulos y gameplay de pilotos.</div>
+      </div>
+      <div class="dl3-feat" style="--delay:.15s">
+        <div class="dl3-feat-glow" style="background:#f5c518"></div>
+        <div class="dl3-feat-icon" style="color:#f5c518">★</div>
+        <div class="dl3-feat-title" id="dlFeat3Title">Favoritos y loadouts</div>
+        <div class="dl3-feat-desc" id="dlFeat3Desc">Guarda tus favoritos. Crea loadouts personalizados.</div>
+      </div>
+      <div class="dl3-feat" style="--delay:.2s">
+        <div class="dl3-feat-glow" style="background:var(--green)"></div>
+        <div class="dl3-feat-icon" style="color:var(--green)">⚔</div>
+        <div class="dl3-feat-title" id="dlFeat4Title">Comparador + Progreso</div>
+        <div class="dl3-feat-desc" id="dlFeat4Desc">Compara titanes. Sube de rango descubriendo la base de datos.</div>
+      </div>
+    </div>
+
+    <!-- ── PATCH NOTES ───────────────────────────────────── -->
+    <div class="dl3-patch" id="dl3Patch">
+      <div class="dl3-patch-head">
+        <span class="dl3-patch-label" id="dlPatchTitle">◆  NOTAS DEL PARCHE</span>
+        <span class="dl3-patch-ver">v1.0</span>
+      </div>
+      <div class="dl3-patch-body">
+        <div class="dl3-patch-row"><span class="dl3-ptag new" id="dlTagNew">NUEVO</span><span id="dlPatch1">Lanzamiento inicial · TF1 + TF2 completo</span></div>
+        <div class="dl3-patch-row"><span class="dl3-ptag new" id="dlTagNew2">NUEVO</span><span id="dlPatch2">Favoritos, progreso de piloto y loadouts</span></div>
+        <div class="dl3-patch-row"><span class="dl3-ptag new" id="dlTagNew3">NUEVO</span><span id="dlPatch3">Comparador de titanes · Titán del día</span></div>
+        <div class="dl3-patch-row"><span class="dl3-ptag new" id="dlTagNew4">NUEVO</span><span id="dlPatch4">Campaña de TF2 por capítulos con vídeo</span></div>
+        <div class="dl3-patch-row"><span class="dl3-ptag fix" id="dlTagFix1">FIX</span><span id="dlPatch5">Traducciones ES/EN revisadas</span></div>
+      </div>
+      <div class="dl3-patch-foot" id="dlPatchNote">Las actualizaciones futuras aparecerán aquí.</div>
+    </div>
+
+    <!-- ── INSTALL NOTE ───────────────────────────────────── -->
+    <p class="dl3-install" id="dlInstall">
+      Para instalar activa <strong>Fuentes desconocidas</strong> en Ajustes → Seguridad.
+    </p>
+
+  </div>
+</section>
+
+<!-- COMPARAR TITANES -->
+<section class="section" id="sec-compare">
+  <div class="compare-page">
+    <div class="compare-header">
+      <div class="compare-tag" id="compareTagLabel">◆  COMPARAR TITANES</div>
+    </div>
+    <div class="compare-selectors">
+      <select class="compare-select" id="cmpSel1" onchange="updateCompare()"></select>
+      <div class="compare-vs">VS</div>
+      <select class="compare-select" id="cmpSel2" onchange="updateCompare()"></select>
+    </div>
+    <div id="compareResult" class="compare-result"></div>
+  </div>
+</section>
+
+<!-- LOADOUTS -->
+<section class="section" id="sec-loadouts">
+  <div class="loadout-page">
+    <div class="loadout-header">
+      <div>
+        <div class="compare-tag" id="loadoutsTagLabel">◆  TUS LOADOUTS</div>
+        <div class="loadout-sub" id="loadoutSubLabel">Crea tu equipamiento personalizado</div>
+      </div>
+      <button class="loadout-new-btn" id="btnNewLoadout" onclick="showLoadoutEditor()">+ NUEVO</button>
+    </div>
+    <div id="loadoutList" class="loadout-list"></div>
+
+    <!-- Editor inline -->
+    <div id="loadoutEditor" class="loadout-editor" style="display:none">
+      <div class="loadout-editor-title" id="loadoutEditorTitle">NUEVO LOADOUT</div>
+      <div class="loadout-form">
+        <div class="lf-group">
+          <label class="lf-label" id="lblLoadoutName">Nombre del loadout</label>
+          <input class="lf-input" id="ltName" placeholder="Mi loadout...">
+        </div>
+        <div class="lf-group">
+          <label class="lf-label" id="lblPilot">Piloto</label>
+          <select class="lf-select" id="ltPilot"></select>
+        </div>
+        <div class="lf-group">
+          <label class="lf-label" id="lblTitan">Titán</label>
+          <select class="lf-select" id="ltTitan"></select>
+        </div>
+        <div class="lf-group">
+          <label class="lf-label" id="lblPrimary">Arma primaria</label>
+          <select class="lf-select" id="ltPrimary"></select>
+        </div>
+        <div class="lf-group">
+          <label class="lf-label" id="lblSecondary">Arma secundaria</label>
+          <select class="lf-select" id="ltSecondary"></select>
+        </div>
+        <div class="lf-actions">
+          <button class="lf-save" id="btnSaveLoadout" onclick="saveLoadout()">GUARDAR</button>
+          <button class="lf-cancel" onclick="hideLoadoutEditor()" id="btnCancelLoadout">CANCELAR</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAVORITOS -->
+<section class="section" id="sec-favorites">
+  <div class="fav-page">
+    <div class="fav-header">
+      <div class="compare-tag" id="favTagLabel">◆  FAVORITOS</div>
+      <span class="fav-count" id="favCount">0</span>
+    </div>
+    <div id="favEmpty" class="fav-empty" style="display:none">
+      <div class="fav-empty-icon">★</div>
+      <div id="favEmptyText">Pulsa ★ en cualquier titán, piloto o arma para guardarlo aquí</div>
+    </div>
+    <div id="favGrid" class="card-grid"></div>
+
+    <!-- Progress tracker -->
+    <div class="progress-section">
+      <div class="compare-tag" id="progressTagLabel" style="margin-bottom:14px">◆  TU PROGRESO</div>
+      <div class="progress-rank-row">
+        <span class="progress-rank" id="progressRank">RECLUTA</span>
+        <span class="progress-pct" id="progressPct">0%</span>
+      </div>
+      <div class="progress-bar-outer">
+        <div class="progress-bar-fill" id="progressBarFill" style="width:0%"></div>
+      </div>
+      <div class="progress-label" id="progressLabel">0 de 0 entradas descubiertas</div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══════════════════════ DETAIL OVERLAY ═══════════════════════ -->
+<div class="overlay" id="overlay" onclick="closeDetail(event)">
+  <div class="detail-panel" id="detailPanel">
+    <div class="panel-handle"></div>
+    <div id="detailContent"></div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
