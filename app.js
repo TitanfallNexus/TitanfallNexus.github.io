@@ -1,5 +1,5 @@
 const TITAN_VIDEOS = {
-  ion:       "https://www.youtube.com/embed/IMOl9o8vZIE?rel=0",
+  ion:       "https://www.youtube.com/embed/lT4igfw6XRs?rel=0",
   scorch:    "https://www.youtube.com/embed/jG-rWOGAIUE?rel=0",
   ronin:     "https://www.youtube.com/embed/3psRTlxz5AY?rel=0",
   tone:      "https://www.youtube.com/embed/1k2uSSFs_Xc?rel=0",
