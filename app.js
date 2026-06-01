@@ -4,7 +4,7 @@ const TITAN_VIDEOS = {
   ronin:     "https://www.youtube.com/embed/3psRTlxz5AY?rel=0",
   tone:      "https://www.youtube.com/embed/1k2uSSFs_Xc?rel=0",
   northstar: "https://www.youtube.com/embed/1BLyAxz6pLY?rel=0",
-  legion:    "https://www.youtube.com/embed/cAAyHn58KPw?rel=0",
+  legion:    "https://www.youtube.com/embed/TRLkh9zuHAU?rel=0",
   monarch:   "https://www.youtube.com/embed/s85IrfMlBUA?rel=0",
 };
 
